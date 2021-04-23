@@ -14,7 +14,13 @@ services:
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "3306:3306"
-    restart: always
+    restart: always 
+    # command: --init-file /data/application/init.sql #ojo aquí Añado esto para del init
+    volumes:
+  #    - /opt/mysql_data:/var/lib/mysql   Este era el que utilizaba para el primer volume
+       - ./init.sql:/docker-entrypoint-initdb.d/init.sql   #Añado este para el init
+
+
 
   php:
     build:

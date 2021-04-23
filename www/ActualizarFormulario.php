@@ -1,3 +1,15 @@
+<?php
+
+    include("conexion.php");
+
+    $id = $_GET['id'];
+
+    $solicitud = "SELECT * FROM monedas WHERE id=$id"; //solo el de este id
+
+    $resultado = mysqli_query($conexion, $solicitud);
+
+?>
+
 <!DOCTYPE html>
 <html lang='es'>
 <head>
@@ -38,15 +50,27 @@
 <div class='col-lg-4 bg-white border  rounded-3 shadow p-5  mx-auto my-auto'>
 
 <div class="">
-    <form  method="POST" action="InsertaRegistros.php">
 
-    Nombre: <br> <input class="mt-2 form-control" type="text" name="nombre"> <br>
-    Precio: <br> <input class="mt-2 form-control" type="text" name="precio"> <br><br>
-    
-    <input class="btn btn-lg btn-danger mx-auto " type="submit" name="ENVIAR" value="CREAR"> <br>
-    
-    </form>
-    </div>
+
+<!-- ABRIMOS UN FORMULARIO -->
+<form method="POST" action="ActualizarRegistro.php"> <!-- Lo enviamos a un nuevo php -->
+
+<?php
+while($fila = mysqli_fetch_array($resultado)){ // RECORREMOS EL ARRAY DEL RESULTADO
+
+// como la sentencia sql, solo indica el campo de ese id específico
+// pondrá estos campos solo una vez
+// $fila['Nombre'] será el nombre del id indicado en la sentencia sql
+    echo "Nombre: <input class='mt-2 form-control' type='text'; name='nombre' value=' " . $fila['Nombre'] . " '> <br> ";
+    echo "Precio: <input class='mt-2 form-control' type='text'; name='precio' value=' " . $fila['Precio'] . " '> <br> ";
+   
+    echo "<input type='hidden'; name='id' value=' " . $id . " '> <br> ";
+}
+?>
+<input class="btn btn-lg btn-danger mx-auto" type="submit" name="ENVIAR" value="CAMBIAR">
+</form>
+
+</div>
 
     </div>
     </div>

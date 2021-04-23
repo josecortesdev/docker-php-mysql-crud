@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+// <link rel='stylesheet' type='text/css'  href='consulta.css' />
+// background-color:  #faf9fa;
+echo " <!DOCTYPE html>
 <html lang='es'>
 <head>
     <meta charset='UTF-8'>
@@ -37,18 +40,51 @@
 
 <div class='col-lg-4 bg-white border  rounded-3 shadow p-5  mx-auto my-auto'>
 
-<div class="">
-    <form  method="POST" action="InsertaRegistros.php">
+";
 
-    Nombre: <br> <input class="mt-2 form-control" type="text" name="nombre"> <br>
-    Precio: <br> <input class="mt-2 form-control" type="text" name="precio"> <br><br>
-    
-    <input class="btn btn-lg btn-danger mx-auto " type="submit" name="ENVIAR" value="CREAR"> <br>
-    
-    </form>
-    </div>
 
-    </div>
-    </div>
-    </body>
-    </html>
+
+//CONEXION A LA BBDD  
+    include("conexion.php");
+
+// CONSULTA
+    $solicitud = "SELECT * FROM monedas ORDER BY Precio ASC";
+    $resultado = mysqli_query($conexion, $solicitud);
+
+
+//VACIADO DE DATOS
+echo " <table class='table'> 
+<thead>
+<tr>
+<th scope='col'>Nombre</th>  
+<th scope='col'>Precio</th>
+<th scope='col'>Modificar</th>
+<th scope='col'>Eliminar</th>
+</tr> 
+</thead><tbody>";
+
+    while($fila = mysqli_fetch_array($resultado)){
+        echo "<tr>"; 
+        echo "<td>". $fila['Nombre'] . "</td>" ;
+        echo "<td>". $fila['Precio'] . "</td>" ;
+        echo "<td> <a href='ActualizarFormulario.php?id=". $fila['id'] ." '> actualizar </td>" ;
+        echo "<td> <a href='eliminar.php?id=". $fila['id'] ." '> eliminar </td>" ;
+        echo "</tr>";
+    }
+echo "</tbody></table>
+
+<a type='button' class='btn btn-primary btn-lg mt-4' href='index.php'>Añadir vacuna</a>
+
+</div>
+</div>
+
+</body>
+</html>
+
+
+";
+?>
+
+
+
+
