@@ -7,7 +7,7 @@ echo " <!DOCTYPE html>
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Consulta</title>
+    <title>Inicio</title>
 
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6' crossorigin='anonymous'>
 
@@ -48,7 +48,7 @@ echo " <!DOCTYPE html>
     include("conexion.php");
 
 // CONSULTA
-    $solicitud = "SELECT * FROM monedas ORDER BY Precio ASC";
+    $solicitud = "SELECT * FROM productos ORDER BY Precio ASC";
     $resultado = mysqli_query($conexion, $solicitud);
 
 
@@ -73,7 +73,7 @@ echo " <table class='table'>
     }
 echo "</tbody></table>
 
-<a type='button' class='btn btn-primary btn-lg mt-4' href='index.php'>Añadir vacuna</a>
+<a type='button' class='btn btn-primary btn-lg mt-4' href='Crear.php'>Añadir vacuna</a>
 
 </div>
 </div>
@@ -84,7 +84,4 @@ echo "</tbody></table>
 
 ";
 ?>
-
-
-
 

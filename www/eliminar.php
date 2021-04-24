@@ -4,10 +4,10 @@
 
     $id = $_GET['id'];
 
-    $solicitud = "DELETE FROM monedas WHERE id=$id";
+    $solicitud = "DELETE FROM productos WHERE id=$id";
 
     $resultado = mysqli_query($conexion, $solicitud);
 
-    header("location: consulta.php");
+    header("location: index.php");
 
 ?>
