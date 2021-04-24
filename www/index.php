@@ -1,14 +1,13 @@
 
 <?php
-// <link rel='stylesheet' type='text/css'  href='consulta.css' />
-// background-color:  #faf9fa;
+
 echo " <!DOCTYPE html>
 <html lang='es'>
 <head>
     <meta charset='UTF-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <title>Consulta</title>
+    <title>Lista</title>
 
     <!-- Bootstrap -->
     <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6' crossorigin='anonymous'>
@@ -16,11 +15,17 @@ echo " <!DOCTYPE html>
     <!-- font awesome -->
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css'
     integrity='sha256-46qynGAkLSFpVbEBog43gvNhfrOj+BmwXdxFgVK/Kvc=' crossorigin='anonymous' />
+
+    <!-- Google fonts -->
+    <link rel='preconnect' href='https://fonts.gstatic.com'>
+    <link href='https://fonts.googleapis.com/css2?family=Roboto&display=swap' rel='stylesheet'>
     
     <style>
-    html{ height: 100%;}
+    html{ 
+      height: 100%;}
     body{
-        
+        font-family: 'Roboto', sans-serif;
+
         background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
         background-size: 400% 400%;
         animation: gradient 15s ease infinite;
@@ -49,15 +54,15 @@ echo " <!DOCTYPE html>
 
 
 
-//CONEXION A LA BBDD  
-    include("conexion.php");
+// CONEXION A LA BBDD  
+include("conexion.php");
 
 // CONSULTA
-    $solicitud = "SELECT * FROM productos ORDER BY Precio ASC";
-    $resultado = mysqli_query($conexion, $solicitud);
+$solicitud = "SELECT * FROM productos ORDER BY Precio ASC";
+$resultado = mysqli_query($conexion, $solicitud);
 
 
-//VACIADO DE DATOS
+// VACIADO DE DATOS
 echo "<div class='table-responsive'> <table class='table'> 
 <thead>
 <tr>
@@ -68,14 +73,14 @@ echo "<div class='table-responsive'> <table class='table'>
 </tr> 
 </thead><tbody>";
 
-    while($fila = mysqli_fetch_array($resultado)){
-        echo "<tr>"; 
-        echo "<td>". $fila['Nombre'] . "</td>" ;
-        echo "<td>". $fila['Precio'] . "</td>" ;
-        echo "<td> <a href='ActualizarFormulario.php?id=". $fila['id'] ." '> <div class=''> <i class='fas fa-pen'></i> </div> </td>" ;
-        echo "<td> <a href='eliminar.php?id=". $fila['id'] ." '> <div class=' text-danger'> <i class='fas fa-trash-alt'></i></div> </td>" ;
-        echo "</tr>";
-    }
+while ($fila = mysqli_fetch_array($resultado)) {
+  echo "<tr>";
+  echo "<td>" . $fila['Nombre'] . "</td>";
+  echo "<td>" . $fila['Precio'] . "</td>";
+  echo "<td> <a href='ActualizarFormulario.php?id=" . $fila['id'] . " '> <div class=''> <i class='fas fa-pen'></i> </div> </td>";
+  echo "<td> <a href='eliminar.php?id=" . $fila['id'] . " '> <div class=' text-danger'> <i class='fas fa-trash-alt'></i></div> </td>";
+  echo "</tr>";
+}
 echo "</tbody></table> </div>
 
   <div class='text-center'>

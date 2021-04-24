@@ -6,6 +6,7 @@ $db = 'dbname';
 
 $conexion = new mysqli($host, $user, $password, $db); // Aquí se hace la conexion
 
+//Esto es para comprobar si conecta
 // if($conn->connect_error){
 //     echo 'conexión fallida' . $conn->connect_error;  
 //     exit;

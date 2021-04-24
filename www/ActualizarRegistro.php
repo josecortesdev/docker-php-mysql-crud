@@ -13,7 +13,7 @@ $solicitud = "UPDATE productos SET Nombre='$nombre', Precio='$precio' WHERE id=$
 //enviar solicitud
 $resultado = mysqli_query($conexion, $solicitud);
 
-//volver a dos
+//ir a index
 header("location: index.php");
 
 ?>
