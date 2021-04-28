@@ -1,6 +1,10 @@
 # Docker: CRUD con PHP y MySQL 
 Recurso con el que puedes instalar rápidamente un ambiente de desarrollo local para comenzar un proyecto en el que haga falta un CRUD con PHP y MySQL utilizando Docker.
 
+# Versión 2
+Puedes ver una versión más actualizada de esta aplicación en la que he añadido un Login. Se crea un hash de las contraseñas antes de almacenarlas en la base de datos.
+https://github.com/josecortesdev/docker-php-mysql-crud-login
+
 ## Instrucciones para instalar el ambiente de desarrollo
 En línea de comandos:
 ```
