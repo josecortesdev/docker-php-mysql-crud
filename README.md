@@ -22,8 +22,8 @@ docker-compose stop    #Detener el ambiente de desarrollo
 docker-compose down    #Detener y eliminar el ambiente de desarrollo
 ```
 ## Estructura de archivos
-* /docker/ contiene los archivos de configuración de Docker.
-* /www/ contiene los archivos PHP del proyecto.
+* ```/docker/``` contiene los archivos de configuración de Docker.
+* ```/www/``` contiene los archivos PHP del proyecto.
 * ```init.sql``` es para modificar la configuración inicial de la base de datos.
 
 ## Credenciales para la conexión
